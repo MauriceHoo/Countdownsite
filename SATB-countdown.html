@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html lang="nl">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #000;
+    }
+
+    .background-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 1;
+        opacity: 100; /* Pas de doorzichtigheid van de afbeelding aan */
+    }
+
+    p {
+        text-align: center;
+        font-size: 70px;
+        color: white;
+        margin-top: -350px;
+        z-index: 1;
+		text-shadow: 2px 2px 8px rgba(0, 0, 4, 0.7); /* x-offset, y-offset, blur-radius, color */
+    }
+</style>
+</head>
+<body>
+
+<img src="Reminder SATB_Atrium aftellen.jpg" alt="Achtergrond" class="background-image">
+
+<p id="demo"></p>
+
+<script>
+// Stel de datum in waarnaar wordt afgeteld
+var countDownDate = new Date("Aug 31, 2024 13:00:00").getTime();
+
+// Update de countdown elke seconde
+var x = setInterval(function() {
+
+  // Haal de huidige datum en tijd op
+  var now = new Date().getTime();
+    
+  // Bereken het verschil tussen nu en de countdown-datum
+  var distance = countDownDate - now;
+    
+  // Bereken dagen, uren, minuten en seconden
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+  // Toon het resultaat in het element met id="demo"
+  document.getElementById("demo").innerHTML = days + " dagen tot "
+    
+  // Als de countdown voorbij is, verander de tekst
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "VERLOPEN";
+  }
+}, 1000);
+</script>
+
+</body>
+</html>
